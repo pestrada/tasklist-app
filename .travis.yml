@@ -3,4 +3,5 @@ rvm
   - 2.0.0
 
 before_script:
- - bundle exec rake --trace db:create:all db:migrate
+ - "bundle exec rake db:migrate"
+ - "bundle exec rake db:test:prepare"
