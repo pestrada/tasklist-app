@@ -1,0 +1,5 @@
+rvm
+  - 2.0.0
+
+before_script:
+ - bundle exec rake db:create:all db:schema:load | tail
