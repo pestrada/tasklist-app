@@ -2,13 +2,13 @@ require 'test_helper'
 
 class TasksControllerTest < ActionController::TestCase
   
-  test "creates a new task" do
+  test "new" do
     get :new
     assert_response :success
     assert_not_nil assigns[:task]
   end
   
-  test "saves a new task" do
+  test "create" do
     assert_difference "Task.count", 1 do
       post :create, task: { description: 'sample_task' }
     end
@@ -16,10 +16,17 @@ class TasksControllerTest < ActionController::TestCase
     assert_response :success
   end
   
-  test "sends error message when create task fails" do
+  test "responds with error message when create fails" do
     post :create, task: { description: '' }
     assert_response :unprocessable_entity
     assert flash[:notice] == 'Task description should not be empty'
+  end
+  
+  test "index" do
+    Task.create(description: 'sample_task')
+    get :index
+    assert_response :success
+    assert_not_nil assigns[:tasks]
   end
   
 end
