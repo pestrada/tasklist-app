@@ -8,4 +8,12 @@ class TasksControllerTest < ActionController::TestCase
     assert_not_nil assigns[:task]
   end
   
+  test "saves a new task" do
+    assert_difference "Task.count", 1 do
+      post :create, task: { description: 'sample_task' }
+    end
+    
+    assert_response :success
+  end
+  
 end
