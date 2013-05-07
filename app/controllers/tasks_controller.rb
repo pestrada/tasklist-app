@@ -14,4 +14,8 @@ class TasksController < ApplicationController
       respond_with @task, status: :unprocessable_entity
     end
   end
+  
+  def index
+    @tasks = Task.all
+  end
 end
