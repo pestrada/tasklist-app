@@ -1,7 +1,7 @@
 language: ruby
-rvm
+rvm:
   - 2.0.0
 
 before_script:
- - "bundle exec rake db:migrate"
- - "bundle exec rake db:test:prepare"
+ - bundle exec rake db:migrate
+ - bundle exec rake db:test:prepare
