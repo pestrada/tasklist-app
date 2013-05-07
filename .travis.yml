@@ -2,4 +2,6 @@ rvm
   - 2.0.0
 
 before_script:
- - bundle exec rake db:create:all db:migrate db:schema:load | tail
+ - bundle exec rake db:create:all
+ - bundle exec rake db:migrate
+ - bundle exec rake db:schema:load | tail
