@@ -16,4 +16,10 @@ class TasksControllerTest < ActionController::TestCase
     assert_response :success
   end
   
+  test "sends error message when create task fails" do
+    post :create, task: { description: '' }
+    assert_response :unprocessable_entity
+    assert flash[:notice] == 'Task description should not be empty'
+  end
+  
 end
