@@ -12,7 +12,7 @@
           <%= task.id %>
         </td>
         <td>
-          <%= task.description %>
+          <%= link_to task.description, task_path(task.id) %>
         </td>
       </tr>
     <% end %>

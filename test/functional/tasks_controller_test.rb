@@ -29,4 +29,11 @@ class TasksControllerTest < ActionController::TestCase
     assert_not_nil assigns[:tasks]
   end
   
+  test "show" do
+    task = Task.create(description: 'sample_task')
+    get :show, id: task.id
+    
+    assert_response :success
+  end
+  
 end
