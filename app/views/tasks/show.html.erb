@@ -1,3 +1,4 @@
 <p>
   <%= @task.description %>
 </p>
+<%= button_to 'Delete', task_path(@task.id), method: :delete %>
