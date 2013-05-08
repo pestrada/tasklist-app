@@ -46,4 +46,25 @@ class TasksControllerTest < ActionController::TestCase
     assert_response :success
   end
   
+  test "edit" do
+    task = Task.create(description: 'sample_task')
+    get :edit, id: task.id
+    assert_response :success
+  end
+  
+  test "update" do
+    task = Task.create(description: 'sample_task')
+    put :update, id: task.id, task: { description: 'new description' }
+    
+    assert_redirected_to task_path(task)
+  end
+  
+  test "responds with error message when update fails" do
+    task = Task.create(description: 'sample_task')
+    put :update, id: task.id, task: { description: '' }
+
+    assert flash[:notice] == 'Task description should not be empty'
+    assert_response :unprocessable_entity
+  end
+  
 end

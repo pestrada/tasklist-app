@@ -9,8 +9,9 @@
     <% @tasks.each do |task| %>
     <tr>
       <td> <%= task.id %> </td>
-      <td> <%= link_to task.description, task_path(task.id) %> </td>
-      <td> <%= button_to 'Delete', task_path(task.id), method: :delete %> </td>
+      <td> <%= link_to task.description, task_path(task) %> </td>
+      <td> <%= button_to 'Delete', task_path(task), method: :delete %> </td>
+      <td> <%= button_to 'Edit', edit_task_path(task), method: :get %> </td>
     </tr>
     <% end %>
   </tbody>
