@@ -36,4 +36,14 @@ class TasksControllerTest < ActionController::TestCase
     assert_response :success
   end
   
+  test "delete" do
+    task = Task.create(description: 'sample_task')
+    assert_difference "Task.count", -1 do
+      delete :destroy, id: task.id
+    end
+    
+    assert flash[:notice] == 'Task succesfully destroyed'
+    assert_response :success
+  end
+  
 end
