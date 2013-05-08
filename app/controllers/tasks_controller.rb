@@ -23,6 +23,20 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
   
+  def edit
+    @task = Task.find(params[:id])
+  end
+  
+  def update
+    @task = Task.find(params[:id])
+    if @task.update_attributes params[:task]
+      redirect_to task_path(@task.id)
+    else
+      flash[:notice] = 'Task description should not be empty'
+      respond_with @task, status: :unprocessable_entity
+    end
+  end
+  
   def destroy
     @task = Task.find(params[:id])
     if @task.destroy
