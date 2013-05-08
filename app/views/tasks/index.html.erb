@@ -7,14 +7,11 @@
   </thead>
   <tbody>
     <% @tasks.each do |task| %>
-      <tr>
-        <td>
-          <%= task.id %>
-        </td>
-        <td>
-          <%= link_to task.description, task_path(task.id) %>
-        </td>
-      </tr>
+    <tr>
+      <td> <%= task.id %> </td>
+      <td> <%= link_to task.description, task_path(task.id) %> </td>
+      <td> <%= button_to 'Delete', task_path(task.id), method: :delete %> </td>
+    </tr>
     <% end %>
   </tbody>
 </table>

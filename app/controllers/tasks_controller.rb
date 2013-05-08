@@ -22,4 +22,12 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
   end
+  
+  def destroy
+    @task = Task.find(params[:id])
+    if @task.destroy
+      flash[:notice] = 'Task succesfully destroyed'
+    end
+  end
+  
 end
