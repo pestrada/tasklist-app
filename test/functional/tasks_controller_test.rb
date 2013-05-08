@@ -13,7 +13,7 @@ class TasksControllerTest < ActionController::TestCase
       post :create, task: { description: 'sample_task' }
     end
     
-    assert_response :success
+    assert_redirected_to tasks_path
   end
   
   test "responds with error message when create fails" do
@@ -27,6 +27,13 @@ class TasksControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns[:tasks]
+  end
+  
+  test "show" do
+    task = Task.create(description: 'sample_task')
+    get :show, id: task.id
+    
+    assert_response :success
   end
   
 end
