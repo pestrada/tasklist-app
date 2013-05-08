@@ -13,7 +13,7 @@ class TasksControllerTest < ActionController::TestCase
       post :create, task: { description: 'sample_task' }
     end
     
-    assert_response :success
+    assert_redirected_to tasks_path
   end
   
   test "responds with error message when create fails" do

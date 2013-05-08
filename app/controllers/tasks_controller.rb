@@ -8,7 +8,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(params[:task])
     if @task.save
-      respond_with @task
+      redirect_to tasks_path
     else
       flash[:notice] = 'Task description should not be empty'
       respond_with @task, status: :unprocessable_entity
