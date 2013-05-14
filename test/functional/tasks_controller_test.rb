@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class TasksControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+  
+  def setup
+    @user = users(:user1)
+    sign_in :user, @user
+  end
   
   test "new" do
     get :new
