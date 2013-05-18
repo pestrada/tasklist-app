@@ -4,3 +4,4 @@
 <%= button_to 'Delete', task_path(@task), method: :delete, class: 'btn btn-danger' %>
 <%= button_to 'Edit', edit_task_path(@task), method: :get, class: 'btn btn-success' %>
 <%= button_to 'Finish', task_status_path(@task, status: 'finished'), method: :put, class: 'btn btn-success' %>
+<%= button_to 'Cancel', task_status_path(@task, status: 'cancelled'), method: :put, class: 'btn btn-success' %>

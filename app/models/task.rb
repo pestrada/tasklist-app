@@ -8,6 +8,8 @@ class Task < ActiveRecord::Base
     case new_status
     when 'finished'
       self.status = new_status
+    when 'cancelled'
+      self.status = new_status
     end
   end
 end

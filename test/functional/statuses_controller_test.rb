@@ -12,5 +12,8 @@ class StatusesControllerTest < ActionController::TestCase
     task = tasks(:task1)
     put :update, task_id: task.id, status: { status: 'finished' }
     assert_response :success
+    
+    put :update, task_id: task.id, status: { status: 'cancelled' }
+    assert_response :success
   end
 end
