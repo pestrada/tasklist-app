@@ -2,16 +2,24 @@ require 'test_helper'
 
 class TaskTest < ActiveSupport::TestCase
   
-  test "task description should not be empty" do
-    task = Task.new
-    task.description = ''
-    assert task.save == false
+  def setup
+    @task = Task.new
   end
   
-  test "task description should not be nil" do
-    task = Task.new
-    task.description = nil
-    assert task.save == false
+  test 'description should be valid' do
+    @task.description = ''
+    assert @task.save == false
+    
+    @task.description = nil
+    assert @task.save == false
+  end
+  
+  test 'status should be valid' do
+    @task.status = ''
+    assert @task.save == false
+    
+    @task.status = nil
+    assert @task.save == false
   end
   
 end
