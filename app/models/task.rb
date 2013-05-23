@@ -12,4 +12,16 @@ class Task < ActiveRecord::Base
       self.status = new_status
     end
   end
+  
+  def pending?
+    self.status == 'pending'
+  end
+  
+  def finished?
+    self.status == 'finished'
+  end
+  
+  def cancelled?
+    self.status == 'cancelled'
+  end
 end
