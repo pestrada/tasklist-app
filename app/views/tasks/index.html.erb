@@ -9,12 +9,14 @@
   </thead>
   <tbody>
     <% @tasks.each do |task| %>
-    <tr>
-      <td> <%= task.id %> </td>
-      <td> <%= link_to task.description, task_path(task) %> </td>
-      <td> <%= button_to 'Delete', task_path(task), method: :delete, class: 'btn btn-danger' %> </td>
-      <td> <%= button_to 'Edit', edit_task_path(task), method: :get, class: 'btn btn-success' %> </td>
-    </tr>
+      <% if task.pending? %>
+        <tr>
+          <td> <%= task.id %> </td>
+          <td> <%= link_to task.description, task_path(task) %> </td>
+          <td> <%= button_to 'Delete', task_path(task), method: :delete, class: 'btn btn-danger' %> </td>
+          <td> <%= button_to 'Edit', edit_task_path(task), method: :get, class: 'btn btn-success' %> </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
