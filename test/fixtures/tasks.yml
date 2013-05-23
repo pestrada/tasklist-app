@@ -5,6 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 task1:
+  description: 'sample task'
   status: 'pending'
 #
 two: {}

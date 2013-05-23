@@ -29,21 +29,21 @@ class TasksControllerTest < ActionController::TestCase
   end
   
   test "index" do
-    Task.create(description: 'sample_task')
+    task = tasks(:task1)
     get :index
     assert_response :success
     assert_not_nil assigns[:tasks]
   end
   
   test "show" do
-    task = Task.create(description: 'sample_task')
+    task = tasks(:task1)
     get :show, id: task.id
     
     assert_response :success
   end
   
   test "delete" do
-    task = Task.create(description: 'sample_task')
+    task = tasks(:task1)
     assert_difference "Task.count", -1 do
       delete :destroy, id: task.id
     end
@@ -53,20 +53,22 @@ class TasksControllerTest < ActionController::TestCase
   end
   
   test "edit" do
-    task = Task.create(description: 'sample_task')
+    task = tasks(:task1)
     get :edit, id: task.id
     assert_response :success
   end
   
   test "update" do
-    task = Task.create(description: 'sample_task')
+    task = tasks(:task1)
     put :update, id: task.id, task: { description: 'new description' }
+    assert_redirected_to task_path(task)
     
+    put :update, id: task.id, task: { status: 'finished' }
     assert_redirected_to task_path(task)
   end
   
   test "responds with error message when update fails" do
-    task = Task.create(description: 'sample_task')
+    task = tasks(:task1)
     put :update, id: task.id, task: { description: '' }
 
     assert flash[:notice] == 'Task description should not be empty'

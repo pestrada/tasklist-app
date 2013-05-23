@@ -2,9 +2,7 @@ TasklistApp::Application.routes.draw do
   
   devise_for :users
 
-  resources :tasks do
-    resource :status, only: :update
-  end
+  resources :tasks
   
   root :to => 'tasks#index'
   
