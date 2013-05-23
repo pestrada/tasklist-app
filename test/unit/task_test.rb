@@ -22,20 +22,16 @@ class TaskTest < ActiveSupport::TestCase
     assert @task.save == false
   end
   
-  test '#change_status' do
-    @task.change_status 'finished'
-    assert @task.status == 'finished'
-    
-    @task.change_status 'cancelled'
-    assert @task.status == 'cancelled'
-  end
-  
   test '#pending' do
     assert @task.pending?
-    
+  end
+  
+  test '#finished' do
     @task.status = 'finished'
     assert @task.finished?
-    
+  end
+  
+  test '#cancelled' do
     @task.status = 'cancelled'
     assert @task.cancelled?
   end
