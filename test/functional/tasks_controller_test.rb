@@ -60,10 +60,10 @@ class TasksControllerTest < ActionController::TestCase
   test "update" do
     task = tasks(:task1)
     put :update, id: task.id, task: { description: 'new description' }
-    assert_redirected_to task_path(task)
+    assert_redirected_to tasks_path
     
     put :update, id: task.id, task: { status: 'finished' }
-    assert_redirected_to task_path(task)
+    assert_redirected_to tasks_path
   end
   
   test "responds with error message when update fails" do

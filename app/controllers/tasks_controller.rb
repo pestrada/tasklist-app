@@ -30,7 +30,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update_attributes params[:task]
-      redirect_to task_path(@task.id)
+      redirect_to tasks_path
     else
       flash[:notice] = 'Task description should not be empty'
       respond_with @task, status: :unprocessable_entity
