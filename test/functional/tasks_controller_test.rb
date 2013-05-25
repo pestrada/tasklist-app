@@ -48,8 +48,7 @@ class TasksControllerTest < ActionController::TestCase
       delete :destroy, id: task.id
     end
     
-    assert flash[:notice] == 'Task succesfully destroyed'
-    assert_response :success
+    assert_redirected_to tasks_path
   end
   
   test "edit" do
