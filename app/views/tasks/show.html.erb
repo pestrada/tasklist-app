@@ -7,3 +7,4 @@
   <%= button_to 'Cancel', task_path(@task, task: {status: 'cancelled'}), method: :put, class: 'btn btn-warning' %>
   <%= button_to 'Delete', task_path(@task), method: :delete, class: 'btn btn-danger' %>
 </div>
+<%= link_to '<< return', tasks_path %>
