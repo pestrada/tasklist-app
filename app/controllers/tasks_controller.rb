@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  respond_to :html
+  respond_to :html, :js
   
   def new
     @task = Task.new
@@ -40,7 +40,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     if @task.destroy
-      redirect_to tasks_path
+      respond_with @task
     end
   end
   
