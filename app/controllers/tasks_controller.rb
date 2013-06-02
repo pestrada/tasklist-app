@@ -16,7 +16,12 @@ class TasksController < ApplicationController
   end
   
   def index
-    @tasks = Task.all
+    if params[:all] == 'true'
+      tasks = Task.all
+    else
+      tasks = Task.where('status = ?', 'pending')
+    end
+    @presenter = TaskPresenter.new(tasks)
   end
   
   def show
