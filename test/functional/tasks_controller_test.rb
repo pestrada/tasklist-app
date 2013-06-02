@@ -32,7 +32,7 @@ class TasksControllerTest < ActionController::TestCase
     task = tasks(:task1)
     get :index
     assert_response :success
-    assert_not_nil assigns[:tasks]
+    assert_not_nil assigns[:presenter]
   end
   
   test "show" do
@@ -47,8 +47,6 @@ class TasksControllerTest < ActionController::TestCase
     assert_difference "Task.count", -1 do
       delete :destroy, id: task.id
     end
-    
-    assert_response :success
   end
   
   test "edit" do
