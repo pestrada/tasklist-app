@@ -10,4 +10,8 @@ class TaskPresenter
     'Tasks'
   end
   
+  def no_tasks_message
+    "You don't have any pending tasks. Great!"
+  end
+  
 end
