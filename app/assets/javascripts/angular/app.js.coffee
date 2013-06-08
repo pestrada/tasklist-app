@@ -1,1 +1,1 @@
-window.App = angular.module('AngularTasks', [])
+window.App = angular.module('AngularTasks', ['ngResource'])
