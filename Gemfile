@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'angularjs-rails'
 gem 'devise'
 gem 'jquery-rails'
 gem 'rails', '3.2.13'
