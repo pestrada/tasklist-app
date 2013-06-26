@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   end
   
   def create
-    @task = Task.new(params[:task])
+    @task = Task.new(valid_params)
     if @task.save
       redirect_to tasks_path
     else
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
   
   def update
     @task = Task.find(params[:id])
-    if @task.update_attributes params[:task]
+    if @task.update_attributes valid_params
       redirect_to tasks_path
     else
       flash[:notice] = 'Task description should not be empty'
@@ -47,6 +47,12 @@ class TasksController < ApplicationController
     if @task.destroy
       respond_with @task
     end
+  end
+  
+  private
+  
+  def valid_params
+    params[:task].permit(:description, :status)
   end
   
 end
